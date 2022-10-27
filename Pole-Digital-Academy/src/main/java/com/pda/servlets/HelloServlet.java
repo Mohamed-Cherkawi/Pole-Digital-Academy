@@ -1,4 +1,4 @@
-package com.pda.pda_demo;
+package com.pda.servlets;
 
 import java.io.*;
 
