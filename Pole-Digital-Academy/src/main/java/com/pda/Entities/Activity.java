@@ -1,4 +1,4 @@
-package com.pda.entities;
+package com.pda.Entities;
 
 import java.util.ArrayList;
 import java.util.Date;

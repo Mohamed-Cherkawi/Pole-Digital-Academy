@@ -1,4 +1,4 @@
-package com.pda.entities;
+package com.pda.Entities;
 
 public enum ActivityType {
     FORMATION("formation") ,

@@ -1,4 +1,4 @@
-package com.pda.entities;
+package com.pda.Entities;
 
 public class SuperAdmin extends Admin {
     private final boolean isActive = true;

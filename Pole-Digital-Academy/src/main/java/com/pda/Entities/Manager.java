@@ -1,4 +1,4 @@
-package com.pda.entities;
+package com.pda.Entities;
 
 public class Manager extends User{
     private String domain;

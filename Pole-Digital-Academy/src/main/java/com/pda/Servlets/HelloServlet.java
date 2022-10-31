@@ -1,4 +1,4 @@
-package com.pda.servlets;
+package com.pda.Servlets;
 
 import java.io.*;
 
