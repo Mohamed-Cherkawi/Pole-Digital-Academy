@@ -1,9 +1,10 @@
-package com.pda.entity;
+package com.pda.entities;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Activity {
+    private String test;
     private String title;
     private String description;
     private ActivityType type;
