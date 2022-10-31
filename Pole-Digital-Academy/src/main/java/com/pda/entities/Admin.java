@@ -1,4 +1,4 @@
-package com.pda.entity;
+package com.pda.entities;
 
 import java.util.ArrayList;
 
