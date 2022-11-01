@@ -1,4 +1,4 @@
-package com.pda.Entities;
+package com.pda.entities;
 
 import java.util.Date;
 

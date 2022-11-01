@@ -1778,7 +1778,7 @@
 											"top": 433,
 											"width": 174,
 											"height": 13,
-											"text": "-isActive: bool",
+											"text": "-isActive: statusActivityEnum",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3348,13 +3348,30 @@
 											"height": 13,
 											"text": "-activity_id: int",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGELsZXGMXrVPc=",
+											"_parent": {
+												"$ref": "AAAAAAGEFIdfGHAXkiI="
+											},
+											"model": {
+												"$ref": "AAAAAAGELsZW5sXc6cM="
+											},
+											"font": "Arial;13;0",
+											"left": 749,
+											"top": 667,
+											"width": 198,
+											"height": 13,
+											"text": "-wasPresent: bool",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 744,
 									"top": 617,
 									"width": 208,
-									"height": 53
+									"height": 68
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -3367,7 +3384,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 744,
-									"top": 670,
+									"top": 685,
 									"width": 208,
 									"height": 10
 								},
@@ -3407,7 +3424,7 @@
 							"left": 744,
 							"top": 592,
 							"width": 208,
-							"height": 88,
+							"height": 103,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEFIdfF3AS1wk="
 							},
@@ -3445,8 +3462,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 696,
-									"top": 570,
+									"left": 691,
+									"top": 573,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -3466,8 +3483,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 700,
-									"top": 556,
+									"left": 695,
+									"top": 559,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -3487,8 +3504,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 687,
-									"top": 599,
+									"left": 682,
+									"top": 602,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -3508,8 +3525,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 671,
-									"top": 563,
+									"left": 661,
+									"top": 564,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -3529,8 +3546,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 676,
-									"top": 551,
+									"left": 667,
+									"top": 552,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -3550,8 +3567,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 659,
-									"top": 588,
+									"left": 649,
+									"top": 589,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3572,7 +3589,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 722,
-									"top": 578,
+									"top": 583,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -3591,8 +3608,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 723,
-									"top": 565,
+									"left": 724,
+									"top": 569,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -3611,7 +3628,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 710,
-									"top": 606,
+									"top": 610,
 									"width": 16.25,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -3658,7 +3675,7 @@
 								"$ref": "AAAAAAGEFHmTOlxxIe0="
 							},
 							"lineStyle": 1,
-							"points": "642:577;743:606",
+							"points": "632:577;743:611",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEFIh6zXWkbdg="
@@ -5423,7 +5440,7 @@
 							},
 							"name": "isActive",
 							"visibility": "private",
-							"type": "bool"
+							"type": "statusActivityEnum"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5556,6 +5573,16 @@
 							"name": "activity_id",
 							"visibility": "private",
 							"type": "int"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGELsZW5sXc6cM=",
+							"_parent": {
+								"$ref": "AAAAAAGEFIdfF3APQiY="
+							},
+							"name": "wasPresent",
+							"visibility": "private",
+							"type": "bool"
 						}
 					]
 				},

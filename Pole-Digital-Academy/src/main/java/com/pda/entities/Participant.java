@@ -1,4 +1,4 @@
-package com.pda.Entities;
+package com.pda.entities;
 
 public class Participant extends User {
     private String domain;

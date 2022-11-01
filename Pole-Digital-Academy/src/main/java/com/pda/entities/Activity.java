@@ -1,4 +1,6 @@
-package com.pda.Entities;
+package com.pda.entities;
+
+import com.pda.enums.ActivityType;
 
 import java.util.ArrayList;
 import java.util.Date;

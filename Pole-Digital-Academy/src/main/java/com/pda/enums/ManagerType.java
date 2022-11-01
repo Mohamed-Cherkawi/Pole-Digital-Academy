@@ -1,4 +1,4 @@
-package com.pda.Entities;
+package com.pda.enums;
 
 public enum ManagerType {
     //formateur, intervenant
