@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashSet;
 
 @Entity
+@Table(name = "activity")
 public class Activity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,8 +27,8 @@ public class Activity implements Serializable {
     private Admin createdBy;
     @Column(nullable = false)
     private boolean isActive;
-    @Column(nullable = false)
-    @OneToOne(targetEntity=Manager.class)
+    @JoinColumn(nullable = false)
+    @ManyToOne(targetEntity=Manager.class)
     private Manager manager;
     @OneToMany(targetEntity = Participant.class)
     private HashSet<Participant> participants;

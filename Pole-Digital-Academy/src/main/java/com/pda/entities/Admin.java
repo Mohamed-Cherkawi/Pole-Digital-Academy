@@ -3,10 +3,12 @@ package com.pda.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.util.HashSet;
 
 @Entity
+@Table(name = "admin")
 public class Admin extends User {
     @Column(nullable = false , length = 80)
     private String username;

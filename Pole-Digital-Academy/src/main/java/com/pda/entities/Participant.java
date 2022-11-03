@@ -3,11 +3,13 @@ package com.pda.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.util.HashSet;
 
 
 @Entity
+@Table(name = "participant")
 public class Participant extends User {
     private String domain;
     @Column(nullable = false)
