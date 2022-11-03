@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashSet;
 
 @Entity
+@Table(name = "exercice")
 public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
