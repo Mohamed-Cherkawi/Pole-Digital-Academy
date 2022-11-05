@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+#login-body{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    color: white;
+}
+#left-side-main-container {
+    background-color: #4c6fbf ;
+}
+.__inputs {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+}
+.__inputs:focus {
+    outline: none;
+}
+.__form_labels {
+    font-size: small;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+#help-container{
+    font-size: smaller;
+}
+#login-body input[type="checkbox"]{
+    cursor: pointer;
+}
+#login-body input[type="checkbox"] + label{
+    cursor: pointer;
+}
+#left-side-main-container button {
+    background-color: #7b96d4;
+    color: white;
+    width: 330px;
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: none;
+    transition: 0.3s ease;
+}
+#left-side-main-container button:hover {
+    transform: scale(0.9);
+}
+@media only screen and (max-width: 800px){
+    #right-side-main-container {
+        display: none !important;
+      }
+    #left-side-main-container {
+        width: 100% !important;
+    }  
+
+}
