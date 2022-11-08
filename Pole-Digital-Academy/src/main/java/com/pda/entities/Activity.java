@@ -17,44 +17,65 @@ public class Activity implements Serializable {
     private String title;
     @Column( length = 255)
     private String description;
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false , length = 15)
     private ActivityType type;
     @Column(nullable = false)
     private Date startDate;
     @Column(nullable = false)
     private Date endDate;
     @ManyToOne(targetEntity = Admin.class)
+    @JoinColumn(name="admin_id", nullable=false)
     private Admin createdBy;
     @Column(nullable = false)
     private boolean isActive;
-    @JoinColumn(nullable = false)
     @ManyToOne(targetEntity=Manager.class)
+    @JoinColumn(name = "manager_id",nullable = false)
     private Manager manager;
-    @OneToMany(targetEntity = Participant.class)
-    private HashSet<Participant> participants;
-    @ManyToMany(cascade = { CascadeType.ALL })
+   /* @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
-            name = "Activity_Exercise",
+            name = "activity_participant",
+            joinColumns = { @JoinColumn(name = "activity_id") },
+            inverseJoinColumns = { @JoinColumn(name = "participant_id") }
+    )*/
+    @ManyToMany(targetEntity = Participant.class)
+    private HashSet<Participant> participants;
+   /* @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "activity_exercise",
             joinColumns = { @JoinColumn(name = "activity_id") },
             inverseJoinColumns = { @JoinColumn(name = "exercise_id") }
-    )
+    )*/
+    @ManyToMany(targetEntity = Exercise.class)
     private HashSet<Exercise> exercises;
     public Activity() {
     }
-
     public Activity(String title, String description, ActivityType type, Date startDate, Date endDate, boolean isActive, Manager manager) {
-        this.title = title;
-        this.description = description;
-        this.type = type;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.isActive = isActive;
-        this.manager = manager;
+        setTitle(title);
+        setDescription(description);
+        setType(type);
+        setStartDate(startDate);
+        setEndDate(endDate);
+        setActive(isActive);
+        setManager(manager);
+    }
+    public Activity(String title, String description, ActivityType type, Date startDate, Date endDate, boolean isActive) {
+        setTitle(title);
+        setDescription(description);
+        setType(type);
+        setStartDate(startDate);
+        setEndDate(endDate);
+        setActive(isActive);
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
@@ -95,16 +116,18 @@ public class Activity implements Serializable {
         this.endDate = endDate;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public Admin getCreatedBy() {
+        return createdBy;
     }
 
     public void setCreatedBy(Admin createdBy) {
         this.createdBy = createdBy;
     }
-    public Admin getCreatedBy() {
-        return createdBy;
+
+    public boolean isActive() {
+        return isActive;
     }
+
     public void setActive(boolean active) {
         isActive = active;
     }
@@ -124,16 +147,12 @@ public class Activity implements Serializable {
     public void setParticipants(HashSet<Participant> participants) {
         this.participants = participants;
     }
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    public Integer getId() {
-        return id;
-    }
-    public void setExercises(HashSet<Exercise> exercises) {
-        this.exercises = exercises;
-    }
+
     public HashSet<Exercise> getExercises() {
         return exercises;
+    }
+
+    public void setExercises(HashSet<Exercise> exercises) {
+        this.exercises = exercises;
     }
 }

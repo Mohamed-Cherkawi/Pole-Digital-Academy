@@ -6,18 +6,18 @@ import java.util.Date;
 import java.util.HashSet;
 
 @Entity
-@Table(name = "exercice")
+@Table(name = "exercise")
 public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(nullable = false)
+    @Column(nullable = false , length = 5)
     private String year;
     @Column(nullable = false)
     private Date startDate;
     @Column(nullable = false)
     private Date endDate;
-    @ManyToMany(mappedBy = "exercises")
+    @ManyToMany(targetEntity = Activity.class)
     private HashSet<Activity> activities = new HashSet<>();
 
     public Exercise() {

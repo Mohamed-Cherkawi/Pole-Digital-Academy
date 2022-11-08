@@ -2,9 +2,13 @@ package com.pda.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "users")
-public class User {
+//@MappedSuperclass
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -15,8 +19,7 @@ public class User {
 
     public User() {
     }
-    public User(int id, String name, String email) {
-        this.id = id;
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
