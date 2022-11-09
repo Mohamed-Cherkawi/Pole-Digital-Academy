@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Pole-Digital-Academy:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Pole_Digital_Academy_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Pole-Digital-Academy/web/Web" />
+    </root>
+  </artifact>
+</component>
