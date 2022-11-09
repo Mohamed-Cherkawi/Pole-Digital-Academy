@@ -4,7 +4,8 @@ import com.pda.enums.ManagerType;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "managers")
@@ -13,34 +14,26 @@ public class Manager extends User implements Serializable {
     private String domain;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,length = 10)
+    @Column(nullable = false)
     private ManagerType type;
 
-    @OneToMany(targetEntity = Activity.class)
-    private HashSet<Activity> activities;
+    @OneToMany(mappedBy = "manager")
+    private List<Activity> activities = new ArrayList<>();
 
     public Manager() { }
 
-    public Manager(String name , String email,String domain, ManagerType type) {
+    public Manager(String name , String email, String domain, ManagerType type) {
         super(name, email);
         this.domain = domain;
         this.type = type;
     }
 
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-    public void setType(ManagerType type) {
-        this.type = type;
-    }
-    public void setActivities(HashSet<Activity> activities) { this.activities = activities; }
+    public void setDomain(String domain) { this.domain = domain; }
+    public void setType(ManagerType type) { this.type = type; }
+    public void setActivities(List<Activity> activities) { this.activities = activities; }
 
-    public String getDomain() {
-        return domain;
-    }
-    public ManagerType getType() {
-        return type;
-    }
-    public HashSet<Activity> getActivities() { return activities; }
+    public String getDomain() { return domain; }
+    public ManagerType getType() { return type; }
+    public List<Activity> getActivities() { return activities; }
 
 }

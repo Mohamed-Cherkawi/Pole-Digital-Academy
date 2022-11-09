@@ -4,21 +4,26 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "admins")
 public class Admin extends User implements Serializable {
 
-    @Column(nullable = false , length = 80)
+    @Column(nullable = false)
     private String username;
 
-    @Column(nullable = false , length = 150)
+    @Column(nullable = false)
     private String password;
 
-    @OneToMany(targetEntity = Activity.class)
-    private HashSet<Activity> createdActivities;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "admin")
+    private List<Activity> activities = new ArrayList<>();
 
     @Column(nullable = false)
     private boolean isActive;
@@ -32,28 +37,23 @@ public class Admin extends User implements Serializable {
         this.isActive = isActive;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-    public void setCreatedActivities(HashSet<Activity> createdActivities) { this.createdActivities = createdActivities;}
+    public void setUsername(String username) { this.username = username; }
+    public void setPassword(String password) { this.password = password; }
+    public void setActive(boolean active) { isActive = active; }
+    public void setActivities(List<Activity> activities) { this.activities = activities;}
 
-    public String getUsername() {
-        return username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public boolean isActive() {
-        return isActive;
-    }
-    public HashSet<Activity> getCreatedActivities() {
-        return createdActivities;
-    }
+    public String getUsername() { return username; }
+    public String getPassword() { return password; }
+    public boolean isActive() { return isActive; }
+    public List<Activity> getActivities() { return activities; }
 
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", activities=" + activities +
+                ", isActive=" + isActive +
+                '}';
+    }
 }

@@ -13,10 +13,10 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(nullable = false , length = 100)
+    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false , length = 70)
+    @Column(nullable = false)
     private String email;
 
     public User() { }
@@ -32,4 +32,12 @@ public class User implements Serializable {
     public String getName() { return name; }
     public String getEmail() { return email; }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

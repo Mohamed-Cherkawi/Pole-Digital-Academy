@@ -3,7 +3,8 @@ package com.pda.enums;
 public enum ActivityType {
     FORMATION("formation") ,
     TALK("talk"),
-    EVENEMENT("evenement");
+    EVENT("event");
+
     private final String activity;
     ActivityType(String activity) {
         this.activity = activity;

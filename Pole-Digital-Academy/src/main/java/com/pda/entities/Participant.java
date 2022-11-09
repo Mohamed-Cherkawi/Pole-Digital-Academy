@@ -2,21 +2,27 @@ package com.pda.entities;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+
+import java.util.List;
 
 
 @Entity
 @Table(name = "participants")
 public class Participant extends User {
 
-    @Column(length = 20)
     private String domain;
 
-    @Column(nullable = false , length = 20)
+    @Column(nullable = false )
     private String structure;
 
-    @ManyToMany(targetEntity = Activity.class)
-    private HashSet<Activity> activities;
+    @ManyToMany
+    @JoinTable(
+            name = "activity_participant",
+            joinColumns = { @JoinColumn(name = "participant_id") },
+            inverseJoinColumns = { @JoinColumn(name = "activity_id") }
+    )
+    private List<Activity> activities = new ArrayList<>();
 
     public Participant() { }
 
@@ -26,20 +32,12 @@ public class Participant extends User {
         this.structure = structure;
     }
 
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-    public void setStructure(String structure) {
-        this.structure = structure;
-    }
-    public void setActivities(HashSet<Activity> activities) { this.activities = activities; }
+    public void setDomain(String domain) { this.domain = domain; }
+    public void setStructure(String structure) { this.structure = structure; }
+    public void setActivities(List<Activity> activities) { this.activities = activities; }
 
-    public String getDomain() {
-        return domain;
-    }
-    public String getStructure() {
-        return structure;
-    }
-    public HashSet<Activity> getActivities() { return activities; }
+    public String getDomain() { return domain; }
+    public String getStructure() { return structure; }
+    public List<Activity> getActivities() { return activities; }
 
 }
