@@ -1,26 +1,25 @@
 package com.pda.entities;
 
 import com.pda.enums.ManagerType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "manager")
-public class Manager extends User{
+public class Manager extends User implements Serializable {
     private String domain;
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false,length = 10)
     private ManagerType type;
-    @OneToMany(mappedBy = "manager")
-    private HashSet<Activity> participedActivities;
+    @OneToMany(targetEntity = Activity.class)
+    private HashSet<Activity> managedActivities;
+
     public Manager() {
     }
-    public Manager(int id, String name, String email, String domain, ManagerType type) {
-        super(id, name, email);
+    public Manager(String name , String email,String domain, ManagerType type) {
+        super(name, email);
         this.domain = domain;
         this.type = type;
     }
@@ -41,11 +40,11 @@ public class Manager extends User{
         this.type = type;
     }
 
-    public HashSet<Activity> getParticipedActivities() {
-        return participedActivities;
+    public HashSet<Activity> getManagedActivities() {
+        return managedActivities;
     }
 
     public void setParticipedActivities(HashSet<Activity> participedActivities) {
-        this.participedActivities = participedActivities;
+        this.managedActivities = participedActivities;
     }
 }
