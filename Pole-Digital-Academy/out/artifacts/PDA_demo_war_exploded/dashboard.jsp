@@ -7,12 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>PDA | DASHBOARD</title>
-</head>
-<body>
+   <head>
+      <title>PDA | DASHBOARD</title>
+   </head>
+   <body>
 
-<h1>WELCOME TO DASHBOARD</h1>
+      <h1>WELCOME TO PDA DASHBOARD</h1>
 
-</body>
+   </body>
 </html>
