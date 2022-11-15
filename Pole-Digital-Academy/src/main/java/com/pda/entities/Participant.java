@@ -12,9 +12,14 @@ public class Participant extends User {
     private String domain;
     @Column(nullable = false , length = 20)
     private String structure;
-    @ManyToMany(targetEntity = Activity.class)
+    @Column(name = "activities")
+    @ManyToMany
+    @JoinTable(
+            name = "activity_participant",
+            joinColumns = { @JoinColumn(name = "participant_id") },
+            inverseJoinColumns = { @JoinColumn(name = "activity_id") }
+    )
     private HashSet<Activity> participedActivities;
-
     public Participant() {
     }
     public Participant(String name, String email, String domain, String structure) {

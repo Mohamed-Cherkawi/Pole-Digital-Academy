@@ -1,12 +1,21 @@
 package com.pda;
 
+import com.pda.entities.Admin;
+import com.pda.utils.PersistenceManager;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
 public class Main {
     public static void main(String[] args) {
-            Persistence.createEntityManagerFactory("pol");
-          // EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityManager em = PersistenceManager.getEntityManager();
+        em.getTransaction().begin();
+
+        Admin admin = new Admin("Mohamed Cherkaoui","emailforstudy911@gmail.com","coder2002",
+                "pass123",true);
+
+        em.persist(admin);
+
+        em.getTransaction().commit();
+        em.close();
+
     }
 }

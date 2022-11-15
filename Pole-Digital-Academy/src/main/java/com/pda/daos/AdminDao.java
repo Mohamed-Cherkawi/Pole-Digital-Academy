@@ -12,24 +12,30 @@ public class AdminDao implements AdminInterface {
 
     @Override
     public void add(Admin admin) {
-
+        em.getTransaction().begin();
+        em.persist(admin);
+        em.getTransaction().commit();
     }
     @Override
-    public Admin getAdminByEmail(String email) {
+    public Admin getAdminByUsernPass(String username,String password) {
+            try {
+                em.getTransaction().begin();
 
-        em.getTransaction().begin();
+                Query query = em.createQuery("SELECT admin FROM Admin admin  WHERE admin.username = :username AND admin.password = :password", Admin.class);
 
-        Query query = em.createQuery("SELECT admin FROM Admin admin  where admin.email = :email ", Admin.class);
+                query.setParameter("username", username);
+                query.setParameter("password", password);
 
-        query.setParameter("email",email);
+                Admin admin = (Admin) query.getSingleResult();
 
-        Admin admin = (Admin) query.getSingleResult();
-
-        em.getTransaction().commit();
-
-        return admin;
-
+                em.getTransaction().commit();
+                return admin;
+            } catch ( Exception e ){
+                e.printStackTrace();
+                return null;
+            }
     }
+
     @Override
     public List<Admin> getAllAdmins() {
         return null;

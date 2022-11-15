@@ -11,13 +11,11 @@ public class AdminService implements AdminInterface {
 
     @Override
     public void add(Admin admin) {
-
+        adminDao.add(admin);
     }
     @Override
-    public Admin getAdminByEmail(String email) {
-
-        return adminDao.getAdminByEmail(email);
-
+    public Admin getAdminByUsernPass(String username , String password) {
+        return adminDao.getAdminByUsernPass(username, password);
     }
     @Override
     public List<Admin> getAllAdmins() {

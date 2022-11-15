@@ -13,7 +13,7 @@ public class Manager extends User implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false,length = 10)
     private ManagerType type;
-    @OneToMany(targetEntity = Activity.class)
+    @OneToMany(mappedBy = "manager")
     private HashSet<Activity> managedActivities;
 
     public Manager() {

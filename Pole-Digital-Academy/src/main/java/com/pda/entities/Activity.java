@@ -24,29 +24,15 @@ public class Activity implements Serializable {
     private Date startDate;
     @Column(nullable = false)
     private Date endDate;
-    @ManyToOne(targetEntity = Admin.class)
-    @JoinColumn(name="admin_id", nullable=false)
-    private Admin createdBy;
+    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private Admin admin;
+    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private Manager manager;
     @Column(nullable = false)
     private boolean isActive;
-    @ManyToOne(targetEntity=Manager.class)
-    @JoinColumn(name = "manager_id",nullable = false)
-    private Manager manager;
-   /* @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "activity_participant",
-            joinColumns = { @JoinColumn(name = "activity_id") },
-            inverseJoinColumns = { @JoinColumn(name = "participant_id") }
-    )*/
-    @ManyToMany(targetEntity = Participant.class)
+    @ManyToMany
     private HashSet<Participant> participants;
-   /* @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "activity_exercise",
-            joinColumns = { @JoinColumn(name = "activity_id") },
-            inverseJoinColumns = { @JoinColumn(name = "exercise_id") }
-    )*/
-    @ManyToMany(targetEntity = Exercise.class)
+    @ManyToMany
     private HashSet<Exercise> exercises;
     public Activity() {
     }
@@ -117,11 +103,11 @@ public class Activity implements Serializable {
     }
 
     public Admin getCreatedBy() {
-        return createdBy;
+        return admin;
     }
 
-    public void setCreatedBy(Admin createdBy) {
-        this.createdBy = createdBy;
+    public void setCreatedBy(Admin admin) {
+        this.admin = admin;
     }
 
     public boolean isActive() {

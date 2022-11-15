@@ -1,12 +1,12 @@
 package com.pda.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "admin")
@@ -15,8 +15,9 @@ public class Admin extends User implements Serializable {
     private String username;
     @Column(nullable = false , length = 150)
     private String password;
-    @OneToMany(targetEntity = Activity.class)
-    private HashSet<Activity> createdActivities;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "admin" , cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private Set<Activity> createdActivities = new HashSet<>();
     @Column(nullable = false)
     private boolean isActive;
 
@@ -45,11 +46,11 @@ public class Admin extends User implements Serializable {
         this.password = password;
     }
 
-    public HashSet<Activity> getCreatedActivities() {
+    public Set<Activity> getCreatedActivities() {
         return createdActivities;
     }
 
-    public void setCreatedActivities(HashSet<Activity> createdActivities) {
+    public void setCreatedActivities(Set<Activity> createdActivities) {
         this.createdActivities = createdActivities;
     }
 
@@ -59,6 +60,15 @@ public class Admin extends User implements Serializable {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", createdActivities=" + createdActivities +
+                ", isActive=" + isActive +
+                '}';
     }
     /*  public void login(){}
     public void addACtivity(){}

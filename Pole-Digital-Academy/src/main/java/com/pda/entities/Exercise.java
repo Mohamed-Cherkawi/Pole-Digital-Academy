@@ -17,8 +17,12 @@ public class Exercise {
     private Date startDate;
     @Column(nullable = false)
     private Date endDate;
-    @ManyToMany(targetEntity = Activity.class)
-    private HashSet<Activity> activities = new HashSet<>();
+    @ManyToMany
+    @JoinTable(
+            name = "activity_exercise",
+            joinColumns = { @JoinColumn(name = "exercise_id") },
+            inverseJoinColumns = { @JoinColumn(name = "activity_id") }
+    )    private HashSet<Activity> activities = new HashSet<>();
 
     public Exercise() {
     }

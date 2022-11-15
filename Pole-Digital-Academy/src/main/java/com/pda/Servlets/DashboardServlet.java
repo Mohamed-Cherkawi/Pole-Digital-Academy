@@ -1,5 +1,6 @@
 package com.pda.Servlets;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +14,10 @@ import java.io.IOException;
 public class DashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("dashboard.jsp");
+        if(request.getSession().getAttribute("username") != null)
+            request.getRequestDispatcher("dashboard.jsp").forward(request,response);
+         else
+            response.sendRedirect("/LoginServlet");
     }
 
     @Override

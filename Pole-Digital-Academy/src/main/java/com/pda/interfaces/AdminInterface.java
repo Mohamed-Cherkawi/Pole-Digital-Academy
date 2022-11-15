@@ -5,7 +5,7 @@ import com.pda.entities.Admin;
 
 public interface AdminInterface {
     void add(com.pda.entities.Admin admin);
-    Admin getAdminByEmail(String email);
+    Admin getAdminByUsernPass(String username,String password);
     List<Admin> getAllAdmins();
     void delete(Integer id);
 }

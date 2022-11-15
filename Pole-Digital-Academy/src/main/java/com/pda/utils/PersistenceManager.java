@@ -11,7 +11,7 @@ public class PersistenceManager {
 
         try{
 
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("pda");
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("pol");
 
             entityManager = emf.createEntityManager();
 
