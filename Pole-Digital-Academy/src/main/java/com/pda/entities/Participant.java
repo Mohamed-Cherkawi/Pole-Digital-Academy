@@ -1,6 +1,8 @@
 package com.pda.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,7 @@ public class Participant extends User {
     @Column(nullable = false )
     private String structure;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(
             name = "activity_participant",
             joinColumns = { @JoinColumn(name = "participant_id") },
@@ -39,5 +41,6 @@ public class Participant extends User {
     public String getDomain() { return domain; }
     public String getStructure() { return structure; }
     public List<Activity> getActivities() { return activities; }
+
 
 }

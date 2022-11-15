@@ -16,7 +16,6 @@ public class PersistenceManager {
 
             entityManager = emf.createEntityManager();
 
-
         } catch (Exception e){
 
             System.out.println(e);
@@ -25,10 +24,6 @@ public class PersistenceManager {
 
     }
 
-    public static EntityManager getEntityManager(){
-
-        return entityManager;
-
-    }
+    public static EntityManager getEntityManager(){ return entityManager; }
 
 }

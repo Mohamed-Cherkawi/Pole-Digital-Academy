@@ -17,7 +17,7 @@ public class Manager extends User implements Serializable {
     @Column(nullable = false)
     private ManagerType type;
 
-    @OneToMany(mappedBy = "manager")
+    @OneToMany(mappedBy = "manager",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Activity> activities = new ArrayList<>();
 
     public Manager() { }

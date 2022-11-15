@@ -7,8 +7,6 @@ import com.pda.utils.PersistenceManager;
 
 import jakarta.persistence.EntityManager;
 
-import java.util.Date;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -22,27 +20,26 @@ public class Main {
         Manager manager1 = new Manager("Manager1","manager1@gmail.com","Domain1", ManagerType.FORMATEUR);
         Manager manager2 = new Manager("Manager2","manager2@gmail.com","Domain2", ManagerType.INTERVENANT);
 
-        Activity activity1 = new Activity("activity1", "Description for activity 1", ActivityType.EVENT, new Date(), new Date() ,true);
+        Activity activity1 = new Activity("activity1", "Description for activity 1", ActivityType.EVENT, "2022-11-09", "2022-11-10" ,true);
         activity1.setAdmin(admin1);
         activity1.setManager(manager1);
 
-        Activity activity2 = new Activity("activity2", "Description for activity 2", ActivityType.TALK, new Date(), new Date() ,true);
+        Activity activity2 = new Activity("activity2", "Description for activity 2", ActivityType.TALK, "2022-11-11", "2022-11-12" ,true);
         activity2.setAdmin(admin2);
         activity2.setManager(manager2);
 
-        Exercise exercise1 = new Exercise("2022", new Date(), new Date());
+        Exercise exercise1 = new Exercise("2022", "2022-11-09", "2022-11-11");
         exercise1.getActivities().add(activity1);
 
-        Exercise exercise2 = new Exercise("2023", new Date(), new Date());
+        Exercise exercise2 = new Exercise(  "2023", "2022-11-19", "2022-11-21");
         exercise2.getActivities().add(activity2);
 
         Participant participant1 = new Participant("Participant1", "participant1@gmail.com", "domain1","structure1");
         Participant participant2 = new Participant("Participant2", "participant2@gmail.com", "domain2","structure2");
         Participant participant3 = new Participant("Participant3", "participant3@gmail.com", "domain3","structure3");
-
-        activity1.getParticipants().add(participant1);
-        activity1.getParticipants().add(participant2);
-        activity2.getParticipants().add(participant3);
+        participant1.getActivities().add(activity1);
+        participant2.getActivities().add(activity2);
+        participant3.getActivities().add(activity2);
 
         em.getTransaction().begin();
         em.persist(admin);

@@ -1,11 +1,15 @@
 package com.pda.entities;
 
 import com.pda.enums.ActivityType;
+
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
+
 import java.util.Date;
+
 import java.util.List;
 
 @Entity
@@ -26,53 +30,45 @@ public class Activity implements Serializable {
     private ActivityType type;
 
     @Column(nullable = false)
-    private Date startDate;
+    private String startDate;
 
     @Column(nullable = false)
-    private Date endDate;
+    private String endDate;
 
     @Column(nullable = false)
     private boolean isActive;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Admin admin;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Manager manager;
 
-    @ManyToMany
-    @JoinTable(
-            name = "activity_participant",
-            joinColumns = { @JoinColumn(name = "activity_id") },
-            inverseJoinColumns = { @JoinColumn(name = "participant_id") }
-    )
+    @ManyToMany(mappedBy = "activities", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Participant> participants = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "activity_exercise",
-            joinColumns = { @JoinColumn(name = "activity_id") },
-            inverseJoinColumns = { @JoinColumn(name = "exercise_id") }
-    )
+    @ManyToMany(mappedBy = "activities", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Exercise> exercises = new ArrayList<>();
 
     public Activity() { }
 
-    public Activity(String title, String description, ActivityType type, Date startDate, Date endDate, boolean isActive) {
+    public Activity(String title, String description, ActivityType type, String startDate, String endDate, boolean isActive) {
+
         setTitle(title);
         setDescription(description);
         setType(type);
         setStartDate(startDate);
         setEndDate(endDate);
         setActive(isActive);
+
     }
 
     public void setId(int id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }
     public void setDescription(String description) { this.description = description; }
     public void setType(ActivityType type) { this.type = type; }
-    public void setStartDate(Date startDate) { this.startDate = startDate; }
-    public void setEndDate(Date endDate) { this.endDate = endDate;}
+    public void setStartDate(String startDate) { this.startDate = startDate; }
+    public void setEndDate(String endDate) { this.endDate = endDate;}
     public void setAdmin(Admin admin) { this.admin = admin; }
     public void setActive(boolean active) { isActive = active; }
     public void setManager(Manager manager) { this.manager = manager; }
@@ -83,12 +79,29 @@ public class Activity implements Serializable {
     public String getTitle() { return title; }
     public String getDescription() { return description; }
     public ActivityType getType() { return type; }
-    public Date getStartDate() { return startDate; }
-    public Date getEndDate() { return endDate; }
+    public String getStartDate() { return startDate; }
+    public String getEndDate() { return endDate; }
     public Admin getAdmin() { return admin; }
     public boolean isActive() { return isActive; }
     public Manager getManager() { return manager; }
     public List<Participant> getParticipants() { return participants; }
     public List<Exercise> getExercises() { return exercises; }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", isActive=" + isActive +
+                ", admin=" + admin +
+                ", manager=" + manager +
+                ", participants=" + participants +
+                ", exercises=" + exercises +
+                '}';
+    }
 
 }

@@ -1,9 +1,6 @@
 package com.pda.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -22,7 +19,7 @@ public class Admin extends User implements Serializable {
     private String password;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @OneToMany(mappedBy = "admin")
+    @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Activity> activities = new ArrayList<>();
 
     @Column(nullable = false)
@@ -47,13 +44,4 @@ public class Admin extends User implements Serializable {
     public boolean isActive() { return isActive; }
     public List<Activity> getActivities() { return activities; }
 
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", activities=" + activities +
-                ", isActive=" + isActive +
-                '}';
-    }
 }

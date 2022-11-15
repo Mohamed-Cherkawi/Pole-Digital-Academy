@@ -11,6 +11,9 @@ import java.util.List;
 
 public class AdminDaoClass implements AdminDaoInterface {
 
+    private EntityManager em = PersistenceManager.getEntityManager();
+
+
     @Override
     public void add(Admin admin) {
 
@@ -18,8 +21,6 @@ public class AdminDaoClass implements AdminDaoInterface {
 
     @Override
     public Admin getAdminByEmail(String email) {
-
-        EntityManager em = PersistenceManager.getEntityManager();
 
         em.getTransaction().begin();
 

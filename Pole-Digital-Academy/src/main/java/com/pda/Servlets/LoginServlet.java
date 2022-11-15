@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 
         Admin admin = adminServiceClass.getAdminByEmail(email);
 
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession();
 
         session.setAttribute("email" , email);
 
