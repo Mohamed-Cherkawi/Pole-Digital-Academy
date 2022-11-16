@@ -25,9 +25,38 @@
    </style>
    <body>
 
-       <div class="container mt-5 pt-5">
+   <div class="container mt-5 px-0">
+       <nav class="navbar navbar-expand-lg navbar-light">
+           <div class="container-fluid px-0">
+               <a class="navbar-brand fs-4" href="#">PDA</a>
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                   <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                   <ul class="navbar-nav">
 
-           <div class="mb-4 d-flex justify-content-between align-items-center"> <h1>PARTICIPANTS</h1>  <a href="add-participant" class="btn btn-success">ADD PARTICIPANT</a> </div>
+                       <li class="nav-item">
+                           <a class="nav-link" href="participants">PARTICIPANTS</a>
+                       </li>
+
+                       <li class="nav-item">
+                           <a class="nav-link" href="activities">ACTIVITIES</a>
+                       </li>
+
+                       <li class="nav-item">
+                           <a class="nav-link" href="exercises">EXERCISES</a>
+                       </li>
+
+                   </ul>
+               </div>
+           </div>
+       </nav>
+       <hr>
+   </div>
+
+   <div class="container mt-5 pt-5">
+
+           <div class="mb-4 d-flex justify-content-between align-items-center"> <h5>PDA | PARTICIPANTS</h5>  <a href="add-participant" class="btn btn-success">ADD PARTICIPANT</a> </div>
 
            <table class="table table-bordered">
 

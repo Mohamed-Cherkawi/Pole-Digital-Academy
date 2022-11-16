@@ -1,9 +1,9 @@
 package com.pda.services.classes;
 
 import com.pda.daos.classes.AdminDaoClass;
+
 import com.pda.entities.Admin;
 
-import com.pda.services.interfaces.AdminServiceInterface;
 import com.pda.services.interfaces.GenericServiceInterface;
 
 import java.util.List;
@@ -11,7 +11,6 @@ import java.util.List;
 public class AdminServiceClass implements GenericServiceInterface<Admin> {
 
     private AdminDaoClass adminDaoClass = new AdminDaoClass();
-
 
     @Override
     public void add(Admin admin) { }
@@ -27,4 +26,5 @@ public class AdminServiceClass implements GenericServiceInterface<Admin> {
 
     @Override
     public void delete(Integer id) { }
+
 }

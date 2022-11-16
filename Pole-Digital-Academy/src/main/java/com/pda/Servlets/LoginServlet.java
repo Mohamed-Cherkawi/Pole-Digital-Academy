@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 
         if(email.equals(admin.getEmail()) && password.equals(admin.getPassword())){
 
-            response.sendRedirect("dashboard");
+            response.sendRedirect("activities");
 
         }else{
 

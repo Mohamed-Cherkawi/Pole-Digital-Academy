@@ -2,12 +2,9 @@ package com.pda.services.classes;
 
 import com.pda.daos.classes.ManagerDaoClass;
 
-import com.pda.entities.Admin;
-
 import com.pda.entities.Manager;
 
 import com.pda.services.interfaces.GenericServiceInterface;
-import com.pda.services.interfaces.ManagerServiceInterface;
 
 import java.util.List;
 
