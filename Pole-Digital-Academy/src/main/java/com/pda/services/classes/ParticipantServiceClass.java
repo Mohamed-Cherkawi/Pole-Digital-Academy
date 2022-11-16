@@ -1,32 +1,30 @@
 package com.pda.services.classes;
 
 import com.pda.daos.classes.ParticipantDaoClass;
+
 import com.pda.entities.Participant;
-import com.pda.services.interfaces.ParticipantServiceInterface;
+
+import com.pda.services.interfaces.GenericServiceInterface;
 
 import java.util.List;
 
-public class ParticipantServiceClass implements ParticipantServiceInterface {
+public class ParticipantServiceClass implements GenericServiceInterface<Participant> {
 
     ParticipantDaoClass participantDaoClass = new ParticipantDaoClass();
 
     @Override
-    public void add(Participant participant) { participantDaoClass.add(participant); }
+    public void add(Participant participant) { participantDaoClass.add(participant);}
 
     @Override
-    public Participant getParticipantId(Integer id) { return participantDaoClass.getParticipantId(id); }
+    public Participant getById(Integer id) { return participantDaoClass.getById(id); }
 
     @Override
-    public Participant getParticipantByEmail(String email) {
-        return null;
-    }
+    public Participant getByEmail(String email) { return participantDaoClass.getByEmail(email); }
 
     @Override
-    public List<Participant> getAllParticipants() { return participantDaoClass.getAllParticipants(); }
+    public List<Participant> getAll() {return participantDaoClass.getAll(); }
 
     @Override
-    public void delete(Integer id) {
-
-    }
+    public void delete(Integer id) { }
 
 }

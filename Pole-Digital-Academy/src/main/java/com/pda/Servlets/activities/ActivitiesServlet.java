@@ -16,7 +16,7 @@ public class ActivitiesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ActivityServiceClass activityServiceClass = new ActivityServiceClass();
-        List<Activity> activities = activityServiceClass.getAllActivities();
+        List<Activity> activities = activityServiceClass.getAll();
         request.setAttribute("activities", activities);
         request.getRequestDispatcher("activities/activities.jsp").forward(request, response);
 

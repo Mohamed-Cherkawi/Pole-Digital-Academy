@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 
         AdminServiceClass adminServiceClass = new AdminServiceClass();
 
-        Admin admin = adminServiceClass.getAdminByEmail(email);
+        Admin admin = adminServiceClass.getByEmail(email);
 
         HttpSession session = request.getSession();
 

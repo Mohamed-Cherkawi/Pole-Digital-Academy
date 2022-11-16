@@ -6,25 +6,26 @@ import com.pda.entities.Admin;
 
 import com.pda.entities.Manager;
 
+import com.pda.services.interfaces.GenericServiceInterface;
 import com.pda.services.interfaces.ManagerServiceInterface;
 
 import java.util.List;
 
-public class ManagerServiceClass implements ManagerServiceInterface {
+public class ManagerServiceClass implements GenericServiceInterface<Manager> {
 
     ManagerDaoClass managerDaoClass = new ManagerDaoClass();
 
     @Override
-    public void add(Admin admin) { }
+    public void add(Manager manager) { }
 
     @Override
-    public Manager getManagerId(Integer id) { return managerDaoClass.getManagerId(id); }
+    public Manager getById(Integer id) { return managerDaoClass.getById(id); }
 
     @Override
-    public Manager getManagerByEmail(String email) { return managerDaoClass.getManagerByEmail(email); }
+    public Manager getByEmail(String email) { return managerDaoClass.getByEmail(email); }
 
     @Override
-    public List<Manager> getAllManager() { return  managerDaoClass.getAllManager(); }
+    public List<Manager> getAll() { return managerDaoClass.getAll(); }
 
     @Override
     public void delete(Integer id) { }

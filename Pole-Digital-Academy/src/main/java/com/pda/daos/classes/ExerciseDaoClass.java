@@ -1,7 +1,6 @@
 package com.pda.daos.classes;
 
-import com.pda.daos.interfaces.ExerciseDaoInterface;
-import com.pda.entities.Activity;
+import com.pda.daos.interfaces.GenericDaoInterface;
 import com.pda.entities.Exercise;
 import com.pda.utils.PersistenceManager;
 import jakarta.persistence.EntityManager;
@@ -9,7 +8,7 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class ExerciseDaoClass implements ExerciseDaoInterface {
+public class ExerciseDaoClass implements GenericDaoInterface<Exercise> {
 
     EntityManager em = PersistenceManager.getEntityManager();
 
@@ -23,14 +22,13 @@ public class ExerciseDaoClass implements ExerciseDaoInterface {
     }
 
     @Override
-    public Exercise getExerciseById(Integer id) {
+    public Exercise getById(Integer id) {
 
         em.getTransaction().begin();
 
         Query query = em.createQuery("SELECT exercise FROM Exercise exercise  where exercise.id = :id ", Exercise.class);
 
         query.setParameter("id", id);
-
 
         Exercise exercise = (Exercise) query.getSingleResult();
 
@@ -41,7 +39,10 @@ public class ExerciseDaoClass implements ExerciseDaoInterface {
     }
 
     @Override
-    public List<Exercise> getAllExercises() {
+    public Exercise getByEmail(String email) { return null; }
+
+    @Override
+    public List<Exercise> getAll() {
 
         em.getTransaction().begin();
 
@@ -55,4 +56,5 @@ public class ExerciseDaoClass implements ExerciseDaoInterface {
 
     @Override
     public void delete(Integer id) { }
+
 }

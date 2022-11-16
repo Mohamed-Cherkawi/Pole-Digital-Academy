@@ -1,10 +1,9 @@
 package com.pda.daos.classes;
 
-import com.pda.daos.interfaces.ManagerDaoInterface;
+import com.pda.daos.interfaces.GenericDaoInterface;
 
 import com.pda.entities.Admin;
 
-import com.pda.entities.Exercise;
 import com.pda.entities.Manager;
 import com.pda.utils.PersistenceManager;
 import jakarta.persistence.EntityManager;
@@ -12,15 +11,16 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class ManagerDaoClass implements ManagerDaoInterface {
+public class ManagerDaoClass implements GenericDaoInterface<Manager> {
 
     EntityManager em = PersistenceManager.getEntityManager();
+
 
     @Override
     public void add(Manager manager) { }
 
     @Override
-    public Manager getManagerId(Integer id) {
+    public Manager getById(Integer id) {
 
         em.getTransaction().begin();
 
@@ -33,10 +33,11 @@ public class ManagerDaoClass implements ManagerDaoInterface {
         em.getTransaction().commit();
 
         return manager;
+
     }
 
     @Override
-    public Manager getManagerByEmail(String email) {
+    public Manager getByEmail(String email) {
 
         em.getTransaction().begin();
 
@@ -53,18 +54,17 @@ public class ManagerDaoClass implements ManagerDaoInterface {
     }
 
     @Override
-    public List<Manager> getAllManager() {
+    public List<Manager> getAll() {
 
         em.getTransaction().begin();
-
         Query query = em.createQuery("SELECT manager FROM Manager manager", Manager.class);
-
         em.getTransaction().commit();
-
         return query.getResultList();
+
     }
 
     @Override
-    public void delete(Integer id) { }
+    public void delete(Integer id) {
 
+    }
 }

@@ -16,7 +16,7 @@ public class ExercisesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ExerciseServiceClass exerciseServiceClass = new ExerciseServiceClass();
-        List<Exercise> exercises = exerciseServiceClass.getAllExercises();
+        List<Exercise> exercises = exerciseServiceClass.getAll();
         request.setAttribute("exercises", exercises);
         request.getRequestDispatcher("exercises/exercises.jsp").forward(request, response);
 

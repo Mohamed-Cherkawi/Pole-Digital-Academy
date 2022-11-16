@@ -19,7 +19,7 @@ public class ActivityExercisesServlet extends HttpServlet {
         String id = request.getParameter("id");
 
         ActivityServiceClass activityServiceClass = new ActivityServiceClass();
-        Activity activity = activityServiceClass.getActivityById(Integer.parseInt(id));
+        Activity activity = activityServiceClass.getById(Integer.parseInt(id));
         request.setAttribute("activity", activity);
         request.getRequestDispatcher("activities/activity-exercises.jsp").forward(request, response);
 

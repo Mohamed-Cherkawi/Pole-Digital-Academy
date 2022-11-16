@@ -1,7 +1,6 @@
 package com.pda.daos.classes;
 
-import com.pda.daos.interfaces.AdminDaoInterface;
-
+import com.pda.daos.interfaces.GenericDaoInterface;
 import com.pda.entities.Admin;
 import com.pda.utils.PersistenceManager;
 import jakarta.persistence.EntityManager;
@@ -9,18 +8,18 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class AdminDaoClass implements AdminDaoInterface {
+public class AdminDaoClass implements GenericDaoInterface<Admin> {
 
     private EntityManager em = PersistenceManager.getEntityManager();
 
+    @Override
+    public void add(Admin admin) { }
 
     @Override
-    public void add(Admin admin) {
-
-    }
+    public Admin getById(Integer id) { return null; }
 
     @Override
-    public Admin getAdminByEmail(String email) {
+    public Admin getByEmail(String email) {
 
         em.getTransaction().begin();
 
@@ -37,13 +36,9 @@ public class AdminDaoClass implements AdminDaoInterface {
     }
 
     @Override
-    public List<Admin> getAllAdmins() {
-        return null;
-    }
+    public List<Admin> getAll() { return null; }
 
     @Override
-    public void delete(Integer id) {
-
-    }
+    public void delete(Integer id) { }
 
 }

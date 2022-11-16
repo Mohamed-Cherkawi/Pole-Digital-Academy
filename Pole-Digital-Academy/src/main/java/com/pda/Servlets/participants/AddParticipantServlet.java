@@ -26,7 +26,7 @@ public class AddParticipantServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Activity> activities = activityServiceClass.getAllActivities();
+        List<Activity> activities = activityServiceClass.getAll();
 
         request.setAttribute("activities", activities);
 
@@ -38,7 +38,7 @@ public class AddParticipantServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Integer activity_id = Integer.parseInt(request.getParameter("activity_id"));
-        Activity activity = activityServiceClass.getActivityById(activity_id);
+        Activity activity = activityServiceClass.getById(activity_id);
 
         String name = request.getParameter("name");
         String email = request.getParameter("email");

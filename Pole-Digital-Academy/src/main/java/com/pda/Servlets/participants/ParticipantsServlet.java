@@ -20,7 +20,7 @@ public class ParticipantsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ParticipantServiceClass participantServiceClass = new ParticipantServiceClass();
-        List<Participant> participants = participantServiceClass.getAllParticipants();
+        List<Participant> participants = participantServiceClass.getAll();
         request.setAttribute("participants", participants);
         request.getRequestDispatcher("participants/participants.jsp").forward(request, response);
 

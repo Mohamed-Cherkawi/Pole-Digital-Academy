@@ -21,7 +21,7 @@ public class ParticipantActivitiesServlet extends HttpServlet {
 
         ParticipantServiceClass participantServiceClass = new ParticipantServiceClass();
 
-        Participant participant = participantServiceClass.getParticipantId(Integer.parseInt(id));
+        Participant participant = participantServiceClass.getById(Integer.parseInt(id));
 
         request.setAttribute("participant", participant);
 

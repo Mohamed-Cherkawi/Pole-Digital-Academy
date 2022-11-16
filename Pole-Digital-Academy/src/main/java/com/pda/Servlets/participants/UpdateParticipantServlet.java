@@ -28,9 +28,9 @@ public class UpdateParticipantServlet extends HttpServlet {
 
         String id = request.getParameter("id");
 
-        Participant participant = participantServiceClass.getParticipantId(Integer.parseInt(id));
+        Participant participant = participantServiceClass.getById(Integer.parseInt(id));
 
-        List<Activity> activities = activityServiceClass.getAllActivities();
+        List<Activity> activities = activityServiceClass.getAll();
 
         request.setAttribute("participant", participant );
 
@@ -49,9 +49,9 @@ public class UpdateParticipantServlet extends HttpServlet {
         String structure = request.getParameter("structure");
 
         Integer activity_id = Integer.parseInt(request.getParameter("activity_id"));
-        Activity activity = activityServiceClass.getActivityById(activity_id);
+        Activity activity = activityServiceClass.getById(activity_id);
 
-        Participant participant = participantServiceClass.getParticipantId(Integer.parseInt(request.getParameter("id")));
+        Participant participant = participantServiceClass.getById(Integer.parseInt(request.getParameter("id")));
         EntityManager em = PersistenceManager.getEntityManager();
 
         em.getTransaction().begin();

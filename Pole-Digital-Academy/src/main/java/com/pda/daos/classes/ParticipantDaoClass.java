@@ -1,6 +1,6 @@
 package com.pda.daos.classes;
 
-import com.pda.daos.interfaces.ParticipantDaoInterface;
+import com.pda.daos.interfaces.GenericDaoInterface;
 import com.pda.entities.Activity;
 import com.pda.entities.Participant;
 import com.pda.utils.PersistenceManager;
@@ -9,7 +9,7 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class ParticipantDaoClass implements ParticipantDaoInterface {
+public class ParticipantDaoClass implements GenericDaoInterface<Participant> {
 
     EntityManager em = PersistenceManager.getEntityManager();
 
@@ -19,11 +19,10 @@ public class ParticipantDaoClass implements ParticipantDaoInterface {
         em.getTransaction().begin();
         em.persist(participant);
         em.getTransaction().commit();
-
     }
 
     @Override
-    public Participant getParticipantId(Integer id) {
+    public Participant getById(Integer id) {
 
         em.getTransaction().begin();
 
@@ -31,19 +30,19 @@ public class ParticipantDaoClass implements ParticipantDaoInterface {
 
         query.setParameter("id", id);
 
-
         Participant participant = (Participant) query.getSingleResult();
 
         em.getTransaction().commit();
 
         return participant;
+
     }
 
     @Override
-    public Participant getParticipantByEmail(String email) { return null; }
+    public Participant getByEmail(String email) { return null; }
 
     @Override
-    public List<Participant> getAllParticipants() {
+    public List<Participant> getAll() {
 
         em.getTransaction().begin();
 
@@ -52,8 +51,10 @@ public class ParticipantDaoClass implements ParticipantDaoInterface {
         em.getTransaction().commit();
 
         return query.getResultList();
+
     }
 
     @Override
     public void delete(Integer id) { }
+
 }

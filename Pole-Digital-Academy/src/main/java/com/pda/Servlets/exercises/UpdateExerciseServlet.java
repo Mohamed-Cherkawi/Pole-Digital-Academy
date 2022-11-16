@@ -29,9 +29,9 @@ public class UpdateExerciseServlet extends HttpServlet {
 
         String id = request.getParameter("id");
 
-        Exercise exercise = exerciseServiceClass.getExerciseById(Integer.parseInt(id));
+        Exercise exercise = exerciseServiceClass.getById(Integer.parseInt(id));
 
-        List<Activity> activities = activityServiceClass.getAllActivities();
+        List<Activity> activities = activityServiceClass.getAll();
 
         request.setAttribute("exercise", exercise);
 
@@ -46,7 +46,7 @@ public class UpdateExerciseServlet extends HttpServlet {
 
         Integer activity_id =  Integer.parseInt(request.getParameter("activity_id"));
 
-        Activity activity = activityServiceClass.getActivityById(activity_id);
+        Activity activity = activityServiceClass.getById(activity_id);
 
         String year = request.getParameter("year");
 
@@ -54,7 +54,7 @@ public class UpdateExerciseServlet extends HttpServlet {
 
         String endDate = request.getParameter("end-date");
 
-        Exercise exercise = exerciseServiceClass.getExerciseById(Integer.parseInt(request.getParameter("id"))) ;
+        Exercise exercise = exerciseServiceClass.getById(Integer.parseInt(request.getParameter("id"))) ;
 
         EntityManager em = PersistenceManager.getEntityManager();
         em.getTransaction().begin();

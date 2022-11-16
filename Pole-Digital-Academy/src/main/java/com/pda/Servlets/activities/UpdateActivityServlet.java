@@ -31,9 +31,9 @@ public class UpdateActivityServlet extends HttpServlet {
 
         String id = request.getParameter("id");
 
-        Activity activity = activityServiceClass.getActivityById(Integer.parseInt(id));
+        Activity activity = activityServiceClass.getById(Integer.parseInt(id));
 
-        List<Manager>  managers = managerServiceClass.getAllManager();
+        List<Manager>  managers = managerServiceClass.getAll();
 
         request.setAttribute("activity", activity);
 
@@ -55,11 +55,11 @@ public class UpdateActivityServlet extends HttpServlet {
 
         System.out.println(managerId);
 
-        Admin admin =  adminServiceClass.getAdminByEmail(adminEmail);
+        Admin admin =  adminServiceClass.getByEmail(adminEmail);
 
-        Manager manager = managerServiceClass.getManagerId(Integer.parseInt(managerId));
+        Manager manager = managerServiceClass.getById(Integer.parseInt(managerId));
 
-        Activity activity = activityServiceClass.getActivityById(Integer.parseInt(request.getParameter("id"))) ;
+        Activity activity = activityServiceClass.getById(Integer.parseInt(request.getParameter("id"))) ;
 
         EntityManager em = PersistenceManager.getEntityManager();
 

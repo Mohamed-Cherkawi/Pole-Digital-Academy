@@ -28,7 +28,7 @@ public class AddActivityServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        List<Manager>  managers = managerServiceClass.getAllManager();
+        List<Manager>  managers = managerServiceClass.getAll();
 
         request.setAttribute("managers", managers);
 
@@ -46,9 +46,9 @@ public class AddActivityServlet extends HttpServlet {
         String adminEmail = request.getParameter("admin-email");
         String managerEmail = request.getParameter("manager-email");
 
-        Admin admin =  adminServiceClass.getAdminByEmail(adminEmail);
+        Admin admin =  adminServiceClass.getByEmail(adminEmail);
 
-        Manager manager = managerServiceClass.getManagerByEmail(managerEmail);
+        Manager manager = managerServiceClass.getByEmail(managerEmail);
 
         Activity activity = new Activity(title, description, ActivityType.EVENT, startDate, endDate ,true);
 

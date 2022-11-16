@@ -30,7 +30,7 @@ public class AddExerciseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Activity> activities = activityServiceClass.getAllActivities();
+        List<Activity> activities = activityServiceClass.getAll();
 
         request.setAttribute("activities", activities);
 
@@ -46,7 +46,7 @@ public class AddExerciseServlet extends HttpServlet {
         String endDate = request.getParameter("end-date");
         Integer activity_id =  Integer.parseInt(request.getParameter("activity_id"));
 
-        Activity activity = activityServiceClass.getActivityById(activity_id);
+        Activity activity = activityServiceClass.getById(activity_id);
 
         Exercise exercise = new Exercise(year, startDate, endDate);
 
