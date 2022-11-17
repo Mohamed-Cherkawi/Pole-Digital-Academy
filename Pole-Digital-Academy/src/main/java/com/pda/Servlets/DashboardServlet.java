@@ -1,6 +1,6 @@
 package com.pda.Servlets;
 
-import jakarta.servlet.RequestDispatcher;
+import com.pda.Services.AdminService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,8 +14,13 @@ import java.io.IOException;
 public class DashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.getSession().getAttribute("username") != null)
-            request.getRequestDispatcher("dashboard.jsp").forward(request,response);
+        AdminService adminService = new AdminService();
+        if(request.getSession().getAttribute("username") != null) {
+            System.out.println(adminService.getAllAdmins());
+            request.setAttribute("admins",adminService.getAllAdmins());
+            System.out.println(adminService.getAllAdmins());
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
+        }
          else
             response.sendRedirect("/LoginServlet");
     }

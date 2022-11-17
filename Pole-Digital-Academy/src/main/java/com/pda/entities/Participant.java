@@ -1,54 +1,46 @@
 package com.pda.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+
+import java.util.List;
 
 
 @Entity
-@Table(name = "participant")
+@Table(name = "participants")
 public class Participant extends User {
-    @Column(length = 20)
+
     private String domain;
-    @Column(nullable = false , length = 20)
+
+    @Column(nullable = false )
     private String structure;
-    @Column(name = "activities")
-    @ManyToMany
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(
             name = "activity_participant",
             joinColumns = { @JoinColumn(name = "participant_id") },
             inverseJoinColumns = { @JoinColumn(name = "activity_id") }
     )
-    private HashSet<Activity> participedActivities;
-    public Participant() {
-    }
+    private List<Activity> activities = new ArrayList<>();
+
+    public Participant() { }
+
     public Participant(String name, String email, String domain, String structure) {
         super(name, email);
         this.domain = domain;
         this.structure = structure;
     }
 
-    public String getDomain() {
-        return domain;
-    }
+    public void setDomain(String domain) { this.domain = domain; }
+    public void setStructure(String structure) { this.structure = structure; }
+    public void setActivities(List<Activity> activities) { this.activities = activities; }
 
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
+    public String getDomain() { return domain; }
+    public String getStructure() { return structure; }
+    public List<Activity> getActivities() { return activities; }
 
-    public String getStructure() {
-        return structure;
-    }
 
-    public void setStructure(String structure) {
-        this.structure = structure;
-    }
-
-    public HashSet<Activity> getParticipedActivities() {
-        return participedActivities;
-    }
-
-    public void setParticipedActivities(HashSet<Activity> participedActivities) {
-        this.participedActivities = participedActivities;
-    }
 }

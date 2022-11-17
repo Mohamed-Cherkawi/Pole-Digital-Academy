@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             if(request.getSession().getAttribute("username") != null)
-            request.getRequestDispatcher("dashboard.jsp").forward(request,response);
+            request.getRequestDispatcher("admin.jsp").forward(request,response);
             request.getRequestDispatcher("index.jsp").forward(request,response);
     }
 
@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
         // Getting the data from user form
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+
         if( username == null || username.equals("") ){
             request.setAttribute("error","720");
             request.getRequestDispatcher("index.jsp").forward(request,response);
@@ -35,17 +36,16 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("error","730");
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
-
         AdminService adminSer = new AdminService();
-        Admin admin = adminSer. getAdminByUsernPass(username , password);
+        Admin admin = adminSer.getAdminByUsernPass(username , password);
         System.out.println(admin);
-
         if( admin != null){
+            request.setAttribute("admins", adminSer.getAllAdmins());
+            session.setAttribute("email" , admin.getEmail());
             session.setAttribute("username" , admin.getUsername());
-            response.sendRedirect("DashboardServlet");
+            request.getRequestDispatcher("admin.jsp").forward(request,response);
 
         }else{
-            System.out.println(admin);
            request.setAttribute("error","404"); // Admin Not Found
            request.getRequestDispatcher("index.jsp").forward(request, response);
 

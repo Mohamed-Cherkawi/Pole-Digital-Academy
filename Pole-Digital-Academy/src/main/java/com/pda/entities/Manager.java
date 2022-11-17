@@ -4,47 +4,36 @@ import com.pda.enums.ManagerType;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "manager")
+@Table(name = "managers")
 public class Manager extends User implements Serializable {
-    private String domain;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false,length = 10)
-    private ManagerType type;
-    @OneToMany(mappedBy = "manager")
-    private HashSet<Activity> managedActivities;
 
-    public Manager() {
-    }
-    public Manager(String name , String email,String domain, ManagerType type) {
+    private String domain;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ManagerType type;
+
+    @OneToMany(mappedBy = "manager",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Activity> activities = new ArrayList<>();
+
+    public Manager() { }
+
+    public Manager(String name , String email, String domain, ManagerType type) {
         super(name, email);
         this.domain = domain;
         this.type = type;
     }
 
-    public String getDomain() {
-        return domain;
-    }
+    public void setDomain(String domain) { this.domain = domain; }
+    public void setType(ManagerType type) { this.type = type; }
+    public void setActivities(List<Activity> activities) { this.activities = activities; }
 
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
+    public String getDomain() { return domain; }
+    public ManagerType getType() { return type; }
+    public List<Activity> getActivities() { return activities; }
 
-    public ManagerType getType() {
-        return type;
-    }
-
-    public void setType(ManagerType type) {
-        this.type = type;
-    }
-
-    public HashSet<Activity> getManagedActivities() {
-        return managedActivities;
-    }
-
-    public void setParticipedActivities(HashSet<Activity> participedActivities) {
-        this.managedActivities = participedActivities;
-    }
 }

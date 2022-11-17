@@ -10,6 +10,11 @@ public class AdminService implements AdminInterface {
     private AdminDao adminDao = new AdminDao();
 
     @Override
+    public Admin select(int id) {
+        return adminDao.select(id);
+    }
+
+    @Override
     public void add(Admin admin) {
         adminDao.add(admin);
     }
@@ -19,10 +24,16 @@ public class AdminService implements AdminInterface {
     }
     @Override
     public List<Admin> getAllAdmins() {
-        return null;
+        return adminDao.getAllAdmins();
     }
+
+    @Override
+    public void update(int id , String name , String email , String username , boolean isActive) {
+        adminDao.update(id , name , email , username , isActive);
+    }
+
     @Override
     public void delete(Integer id) {
-
+        adminDao.delete(id);
     }
 }
